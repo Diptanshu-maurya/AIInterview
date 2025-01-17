@@ -49,7 +49,7 @@ function AddNewInterview() {
         createdBy:user?.primaryEmailAddress?.emailAddress
       };
 
-      const res=await fetch("http://localhost:3000/api/InsertMockInterview/",{
+      const res=await fetch("https://ai-interview-nrlk.vercel.app/api/InsertMockInterview/",{
         method:"POST",
         headers:{
           "Content-Type":"application/json",
