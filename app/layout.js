@@ -59,7 +59,8 @@ export default function RootLayout({ children }) {
       >
 
         <Navbar></Navbar>
-        <AnimatePresence mode="wait">
+        {children}
+        {/* <AnimatePresence mode="wait">
           
           <motion.div
            key={pathname}
@@ -69,12 +70,12 @@ export default function RootLayout({ children }) {
            transition={{duration:2}}
           
           >
-          {children}
+          
           </motion.div>
 
 
 
-        </AnimatePresence>
+        </AnimatePresence> */}
         
         
         <Toaster />
