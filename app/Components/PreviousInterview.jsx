@@ -7,6 +7,7 @@ import { useRef } from 'react'
 
 function PreviousInterview() {
   const {user}=useUser();
+  //const userId=user?.primaryEmailAddress?.emailAddress;
   const [interviews,setInterviews]=useState([]);
  // const email = user.primaryEmailAddress?.emailAddress
 
@@ -21,13 +22,19 @@ function PreviousInterview() {
 
   useEffect(()=>{
 
+    if (!user) return;
+
+    const userId = user.primaryEmailAddress?.emailAddress;
+
 
     async function getInterview(){
-      const response=await fetch("http://localhost:3000/api/GetInterview?id=diptanshumaurya39@gmail.com");
+      const response=await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/GetInterview?id=${userId}`);
       const result=await response.json();
       console.log("result",result) 
       setInterviews(result.data);
     }
+
+     console.log("userId",userId)
 
    
       getInterview();
@@ -37,7 +44,7 @@ function PreviousInterview() {
 
 
 
-  },[])
+  },[user]);
   return (
     <div>
        <h1 className="font-bold text-2xl  m-5">Previous Interviews:</h1> 

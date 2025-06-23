@@ -97,7 +97,7 @@ function RecordAnswerSection({ interviewQuestion, activeQuesIdx, id, setActiveQu
       };
       console.log("interviewQuestion",interviewQuestion);
 
-      const res = await fetch("http://localhost:3000/api/InsertUserAns", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/InsertUserAns`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

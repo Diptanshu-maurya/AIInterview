@@ -53,10 +53,11 @@ function Feedback({ params }) {
           setLoading(false);
           return;
         }
+       // console.log("interviewid",resolvedParams.interviewId)
 
-        const response = await fetch(`http://localhost:3000/api/GetUserFeedback?id=${resolvedParams.interviewId}`);
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/GetUserFeedback?id=${resolvedParams.interviewId}`);
         const result = await response.json();
-        console.log("result",result)
+      //  console.log("result",result)
         
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);

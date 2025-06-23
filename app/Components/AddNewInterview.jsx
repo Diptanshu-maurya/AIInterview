@@ -50,7 +50,7 @@ function AddNewInterview() {
         createdBy:user?.primaryEmailAddress?.emailAddress
       };
 
-      const res=await fetch("http://localhost:3000/api/InsertMockInterview/",{
+      const res=await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/InsertMockInterview/`,{
         method:"POST",
         headers:{
           "Content-Type":"application/json",
