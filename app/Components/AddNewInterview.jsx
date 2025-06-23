@@ -38,6 +38,7 @@ function AddNewInterview() {
 
       const result = await chatSession.sendMessage(PROMPT);
       const responseText =  result.response.text();
+      console.log(responseText);
       const jsonResponse = (responseText.replace('```json', '')).replace('```', '');
       setMockResp(jsonResponse);
 
@@ -49,7 +50,7 @@ function AddNewInterview() {
         createdBy:user?.primaryEmailAddress?.emailAddress
       };
 
-      const res=await fetch("https://ai-interview-nrlk.vercel.app/api/InsertMockInterview/",{
+      const res=await fetch("http://localhost:3000/api/InsertMockInterview/",{
         method:"POST",
         headers:{
           "Content-Type":"application/json",

@@ -4,8 +4,8 @@ import PreviousInterview from "../Components/PreviousInterview";
 
 function Dashboard() {
   return (
-    <div>
-      <h1 className=" font-bold text-2xl p-5">
+    <div className="bg-zinc-200">
+      <h1 className=" font-bold text-2xl p-5 bg-zinc-400">
         Start your new mock Interview :
       </h1>
       <AddNewInterview></AddNewInterview>

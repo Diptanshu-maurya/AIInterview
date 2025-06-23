@@ -23,7 +23,7 @@ function PreviousInterview() {
 
 
     async function getInterview(){
-      const response=await fetch("https://ai-interview-nrlk.vercel.app/api/GetInterview?id=diptanshumaurya39@gmail.com");
+      const response=await fetch("http://localhost:3000/api/GetInterview?id=diptanshumaurya39@gmail.com");
       const result=await response.json();
       console.log("result",result) 
       setInterviews(result.data);

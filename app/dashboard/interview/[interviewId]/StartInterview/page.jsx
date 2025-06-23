@@ -13,7 +13,7 @@ function StartInterview({ params }) {
   const [id, setId] = useState(null); // State to store interview ID
   // const [interviewData, setInterviewData] = useState(null);
  
-  const [interviewQuestion,setInterviewQuestion]=useState(null);
+  const [interviewQuestion,setInterviewQuestion]=useState();
   const [activeQuesIdx,setActiveQuesIdx]=useState(0);
 
   // Unwrap the params if it's a Promise
@@ -60,7 +60,11 @@ function StartInterview({ params }) {
             console.log("Parsed Data:", parsedData);
     
             // Store the parsed data in state
-            setInterviewQuestion(parsedData.interviewQuestions);
+            setInterviewQuestion(parsedData);
+            setTimeout(()=>{
+              console.log("interviewQuestion",interviewQuestion);
+            },3000)
+            
           } catch (parseError) {
             console.error("Error parsing JSON:", parseError.message);
           }
@@ -75,14 +79,22 @@ function StartInterview({ params }) {
   }, [id]);
 
   return (
+    <>
+     {!interviewQuestion && <div>Loading....</div>}
+
     <div className="flex items-center justify-center p-4 gap-32 ">
       <div className=" border w-[50%] p-4 ml-40 bg-slate-50 mt-20">
-     <QuestionSection interviewQuestion={interviewQuestion} activeQuesIdx={activeQuesIdx} setActiveQuesIdx={setActiveQuesIdx}></QuestionSection>
+
+     <QuestionSection interviewQuestion={interviewQuestion} activeQuesIdx={activeQuesIdx} setActiveQuesIdx={setActiveQuesIdx}>  </QuestionSection>
       </div>
       <div className="mr-40 mt-20 h-96 ">
         <RecordAnswerSection interviewQuestion={interviewQuestion} activeQuesIdx={activeQuesIdx} id={id}  setActiveQuesIdx={setActiveQuesIdx}></RecordAnswerSection>
       </div>
-    </div>
+      </div>
+   
+    </>
+      
+    
   );
 }
 

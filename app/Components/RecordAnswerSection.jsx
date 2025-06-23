@@ -97,7 +97,7 @@ function RecordAnswerSection({ interviewQuestion, activeQuesIdx, id, setActiveQu
       };
       console.log("interviewQuestion",interviewQuestion);
 
-      const res = await fetch("https://ai-interview-nrlk.vercel.app/api/InsertUserAns", {
+      const res = await fetch("http://localhost:3000/api/InsertUserAns", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
