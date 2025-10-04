@@ -23,31 +23,7 @@ function Navbar() {
 
     <div className="flex flex-1 items-center justify-end md:justify-between">
       <nav aria-label="Global" className="hidden md:block">
-        <ul className="flex items-center gap-6 text-md">
-          <li>
-            <a className="text-white transition hover:text-gray-400" href="#"> About </a>
-          </li>
-
-          <li>
-            <a className="text-white transition hover:text-gray-400" href="#"> Careers </a>
-          </li>
-
-          <li>
-            <a className="text-white transition hover:text-gray-400" href="#"> History </a>
-          </li>
-
-          <li>
-            <a className="text-white transition hover:text-gray-400" href="#"> Services </a>
-          </li>
-
-          <li>
-            <a className="text-white transition hover:text-gray-400" href="#"> Projects </a>
-          </li>
-
-          <li>
-            <a className="text-white transition hover:text-gray-400" href="#"> Blog </a>
-          </li>
-        </ul>
+       
       </nav>
 
       <div className="flex items-center gap-4">
