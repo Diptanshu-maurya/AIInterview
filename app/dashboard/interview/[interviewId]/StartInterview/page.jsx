@@ -44,7 +44,7 @@ function StartInterview({ params }) {
     // }
     async function getInterviewData(id) {
       try {
-        const response = await fetch(`http://localhost:3000/api/GetInterviewData?id=${id}`);
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/GetInterviewData?id=${id}`);
         const result = await response.json();
         console.log(result.data);
     
