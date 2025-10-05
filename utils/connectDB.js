@@ -1,37 +1,33 @@
+
 import mongoose from "mongoose";
 
-const DB_OPTIONS = {
-  dbName: process.env.DBNAME,
-  user: process.env.DBUSERNAME,
-  pass: process.env.DBPASSWORD,
-  authSource: process.env.DBAUTHSOURCE,
-};
 
-if (!process.env.DATABASE_URL) {
-  throw new Error("DATABASE_URL not defined in environment variables");
-}
 
-let cached = global.mongoose;
 
-if (!cached) {
-  cached = global.mongoose = { conn: null, promise: null };
-}
+ async function connectDB(){
+     if(!process.env.DATABASE_URL){
+        throw new Error (" Database url is not provided in env file");
+     }
+     try {
+       
+    //    const DB_OPTIONS = {
+    //      dbName: process.env.DBNAME,
+    //      user: process.env.DBUSERNAME,
+    //      pass: process.env.DBPASSWORD,
+    //      authSource: process.env.DBAUTHSOURCE,
+    //  };
 
-const connectDB = async () => {
-  if (cached.conn) return cached.conn;
+     await mongoose.connect(process.env.DATABASE_URL)
+     console.log("mongodb connection successful")
 
-  if (!cached.promise) {
-    try {
-      cached.promise = mongoose.connect(process.env.DATABASE_URL, DB_OPTIONS);
-      cached.conn = await cached.promise;
-      console.log("MongoDB connected successfully.");
-    } catch (err) {
-      console.error("MongoDB connection error:", err.message);
-      throw err;
-    }
+      
+     } catch (error) {
+      console.error("MongoDB connection error:", error.message);
+      throw new Error("Database connection failed");
+
+      
+     }
+
   }
 
-  return cached.conn;
-};
-
-export default connectDB;
+  export default connectDB;
